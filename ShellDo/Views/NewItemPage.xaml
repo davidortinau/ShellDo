@@ -6,9 +6,13 @@
              mc:Ignorable="d"
              ios:Page.UseSafeArea="True"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:ShellDo.ViewModels"
              x:Class="ShellDo.Views.NewItemPage"
              Title="New Item">
 
+    <ContentPage.BindingContext>
+        <vm:NewItemViewModel />
+    </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <Grid Margin='{OnPlatform iOS="0,-44,0,0", Default=0}'>
@@ -21,10 +25,10 @@
                         BackgroundColor="#f1f1f1"
                         Direction="Row">
                 <Button Text="Cancel"
-                        Margin="0,0,15,0"
-                        Clicked="Cancel_Clicked" />
+                        Command="{Binding CancelCommand}"
+                        Margin="0,0,15,0" />
                 <Button Text="Save"
-                        Clicked="Save_Clicked" />
+                        Command="{Binding SaveCommand}" />
             </FlexLayout>
             <ScrollView Grid.Row="1">
 
